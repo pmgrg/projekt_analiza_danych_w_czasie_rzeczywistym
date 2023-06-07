@@ -1,0 +1,22 @@
+Terminal commands
+
+#  topics list 
+docker exec broker kafka-topics --list --bootstrap-server broker:9092
+
+# new topic 
+docker exec broker kafka-topics --bootstrap-server broker:9092 --create --topic test
+
+# remember topic name -> you will use it for connection
+
+# producent console
+
+docker exec --interactive --tty broker \
+kafka-console-producer --bootstrap-server broker:9092 \
+                       --topic test
+                       
+# consumer console
+
+docker exec --interactive --tty broker \
+kafka-console-consumer --bootstrap-server broker:9092 \
+                       --topic test \
+                       --from-beginning
